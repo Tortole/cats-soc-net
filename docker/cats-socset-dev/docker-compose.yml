@@ -1,0 +1,27 @@
+services:
+    mongodb:
+        container_name: cats-socset-mongodb
+        image: mongo:8.2.4-noble
+        restart: unless-stopped
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: pass
+            MONGO_INITDB_DATABASE: cats-socset-db
+        volumes:
+            - cats-socset-mongodb-data:/data/db
+        ports:
+            - '5440:27017'
+        healthcheck:
+            test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping').ok"]
+            interval: 10s
+            timeout: 10s
+            retries: 5
+            start_period: 40s
+        deploy:
+            resources:
+                limits:
+                    cpus: '1'
+                    memory: 4G
+
+volumes:
+    cats-socset-mongodb-data:
