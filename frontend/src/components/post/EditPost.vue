@@ -59,9 +59,11 @@
 </template>
 
 <script>
-import { server } from '../../utils/helper';
-import axios from 'axios';
-import router from '../../router';
+import axios from "axios";
+
+import router from "@/router";
+import { server } from "@/utils/helper";
+
 export default {
     data() {
         return {
@@ -77,15 +79,15 @@ export default {
 
     methods: {
         editPost() {
-            let postData = {
+            const postData = {
                 title: this.post.title,
                 description: this.post.description,
                 body: this.post.body,
                 author: this.post.author,
                 date_posted: this.post.date_posted,
             };
-            axios.put(`${server.baseURL}/blog/edit?postID=${this.id}`, postData).then((data) => {
-                router.push({ name: 'home' });
+            axios.put(`${server.baseURL}/blog/edit?postID=${this.id}`, postData).then(() => {
+                router.push({ name: "home" });
             });
         },
         getPost() {

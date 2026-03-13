@@ -20,9 +20,11 @@
 </template>
 
 <script>
-import { server } from '../../utils/helper';
-import axios from 'axios';
-import router from '../../router';
+import axios from "axios";
+
+import router from "@/router";
+import { server } from "@/utils/helper";
+
 export default {
     data() {
         return {

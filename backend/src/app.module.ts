@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Module } from "@nestjs/common";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { MongooseModule } from "@nestjs/mongoose";
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { BlogModule } from './blog/blog.module';
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { BlogModule } from "./blog/blog.module";
 
 @Module({
     imports: [
@@ -13,7 +13,7 @@ import { BlogModule } from './blog/blog.module';
             imports: [ConfigModule],
             inject: [ConfigService],
             useFactory: async (config: ConfigService) => ({
-                uri: config.get<string>('MONGODB_URI'),
+                uri: config.get<string>("MONGODB_URI"),
             }),
         }),
         BlogModule,

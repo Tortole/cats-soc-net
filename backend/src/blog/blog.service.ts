@@ -1,14 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
 
-import { Model } from 'mongoose';
-
-import { Post } from './interfaces/post.interface';
-import { CreatePostDTO } from './dto/create-post.dto';
+import { CreatePostDTO } from "./dto/create-post.dto";
+import { Post } from "./interfaces/post.interface";
 
 @Injectable()
 export class BlogService {
-    constructor(@InjectModel('Post') private readonly postModel: Model<Post>) {}
+    constructor(@InjectModel("Post") private readonly postModel: Model<Post>) {}
 
     async getPosts(): Promise<Post[]> {
         const posts = await this.postModel.find().exec();

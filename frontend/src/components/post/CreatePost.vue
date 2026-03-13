@@ -54,17 +54,19 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { server } from '../../utils/helper';
-import router from '../../router';
+import axios from "axios";
+
+import router from "@/router";
+import { server } from "@/utils/helper";
+
 export default {
     data() {
         return {
-            title: '',
-            description: '',
-            body: '',
-            author: '',
-            date_posted: '',
+            title: "",
+            description: "",
+            body: "",
+            author: "",
+            date_posted: "",
         };
     },
 
@@ -74,7 +76,7 @@ export default {
 
     methods: {
         createPost() {
-            let postData = {
+            const postData = {
                 title: this.title,
                 description: this.description,
                 body: this.body,
@@ -84,8 +86,8 @@ export default {
             this.__submitToServer(postData);
         },
         __submitToServer(data) {
-            axios.post(`${server.baseURL}/blog/post`, data).then((data) => {
-                router.push({ name: 'home' });
+            axios.post(`${server.baseURL}/blog/post`, data).then(() => {
+                router.push({ name: "home" });
             });
         },
     },

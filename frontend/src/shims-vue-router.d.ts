@@ -1,5 +1,5 @@
-declare module 'vue-router' {
-    import type { RouteRecordRaw, Router, RouterOptions } from 'vue-router/dist/vue-router';
+declare module "vue-router" {
+    import type { RouteRecordRaw, Router, RouterOptions } from "vue-router/dist/vue-router";
 
     export function createRouter(options: RouterOptions): Router;
 
@@ -13,5 +13,5 @@ declare module 'vue-router' {
     export { RouteRecordRaw, Router, RouterOptions };
 
     // Export all other types from "vue-router/dist/vue-router".
-    export * from 'vue-router/dist/vue-router';
+    export * from "vue-router/dist/vue-router"; // eslint-disable-line import/no-unresolved, import/extensions
 }
